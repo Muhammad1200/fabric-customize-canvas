@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link href="./main.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./constants.js"></script>
+    <script src="./textToolBox.js"></script>
+    <style>
+        .box {
+                
+        --button-padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
+        --button-background: var(--white);
+        --button-hover-background: var(--fa-yellow);
+        --button-color: var(--fa-md-gravy);
+        --button-hover-color: var(--fa-navy);
+        width: 100%;
+        height: 100%;
+        --button-font-weight: var(--font-weight-normal);
+        --button-margin-bottom: 0;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="text-center">
+              <h2>Customize your product</h2>
+        </div>
+  <div class="row">
+    <div class="col-3">
+        <div class="row">
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5" onclick="addText();">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-text-width" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Text</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Upload</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-link" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Image Link</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Draw</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" onclick="addRectangle();" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-square-o" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Rectangle</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Circle</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Triangle</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-gg-circle" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Ellipse</span>
+                </button>
+            </article>
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-map-o" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">Polygon</span>
+                </button>
+            </article>
+            
+            <article class="col-5 mx-1 wrap-icon with-top-tag bg-white p-0" icon-style="solid">
+                <button type="button" class="icon subtle box h5">
+                    <span style="color: var(--fa-navy);">
+                        <i class="fa fa-diamond" aria-hidden="true"></i>
+                    </span> 
+                    <p class="icon-name">trapezoid</span>
+                </button>
+            </article>
+        </div>
+    </div>
+    <div class="col-7">
+        <canvas id="canvas" width="100%" height="100%" style="border: 1px solid #000;"></canvas>
+
+    </div>
+    <div class="col-2 bg-white">
+        <div id="ITextTool" class="row" style="display: none;"></div>
+    </div>
+  </div>
+  <!-- <div>
+    <label for="image-upload">Upload image:</label>
+    <input type="file" id="image-upload">
+  </div>
+  <div>
+    <label for="text-input">Add text:</label>
+    <input type="text" id="text-input">
+  </div>
+  <div>
+    <label for="line-color">Line color:</label>
+    <input type="color" id="line-color">
+  </div> -->
+  
+  <!-- <input type="file" id="file"  /> -->
+  <!-- <button id="add-rectangle">Add Rectangle</button> -->
+
+  <!-- <button type="button" onclick="addText();">Text</button> -->
+  <script src="https://cdn.jsdelivr.net/npm/fabric"></script>
+  <script src="./shapes.js"></script>
+<script>
+
+  const fileInput = document.querySelector('#file');
+  const ITextTool = document.querySelector('#ITextTool');
+  const canvas = new fabric.Canvas('canvas');
+  canvas.setDimensions({width: 800, height:490});
+  const addRectangle = () => rectangle(canvas);
+  const addCircle = () => rectangle(canvas);
+  const addTriangle = () => rectangle(canvas);
+  const addEllipse = () => rectangle(canvas);
+  const addPloygon = () => rectangle(canvas);
+  const addTrapezoid = () => rectangle(canvas);
+
+    $(document).ready(function(){
+        $('#ITextTool').html(TextToolHtml);
+
+        // Fixed Image on Load Page
+        fixedImageFirstTime('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJHealBle7RJMEHRRQbMusRVqEZcvHEXKarg&usqp=CAU');
+
+    });
+
+  const uploadImageLink = (link) => {
+    let image = new Image();
+    image.onload = function (img) {    
+        var pug = new fabric.Image(image, {
+            angle: 0,
+            width: 800,
+            height: 800,
+            left: 50,
+            top: 70,
+            scaleX: .25,
+            scaleY: .25
+        });
+        pug.set
+        canvas.add(pug);
+    };
+    image.src = link;
+  }
+
+  const addText = () => {
+    // create a new textbox object
+    let textbox = new fabric.IText('Type something...', {
+    left: 100,
+    top: 100,
+    fontFamily: 'Helvetica',
+    fontSize: 20,
+    fill: '#000'
+    });
+
+    // add the textbox object to the canvas
+    canvas.add(textbox);
+
+    // select the textbox for editing
+    canvas.setActiveObject(textbox);
+
+    // listen for changes to the textbox text
+    textbox.on('changed', function() {
+    console.log(textbox.text);
+    });
+  }
+
+  const onSetProperties = (e) => {
+    let activeObject = canvas.getActiveObject();
+    activeObject.set(e.target.name,e.target.value);
+    canvas.renderAll();
+  }
+
+  const fixedImageFirstTime = (img) => {
+    fabric.Image.fromURL(img, (img) => {
+        // Set the position of the image
+        img.set({
+          left: 50,
+          right : 50,
+          top: 20,
+          botttom : 20
+        });
+        // img.set({
+        //     width : 700,
+        //     height : 450
+        // })
+        // Set the image as non-selectable and non-editable
+        img.set({
+          selectable: false,
+          evented: false
+        });
+        canvas.add(img);
+        canvas.renderAll();
+      });
+  }
+
+
+
+//   fileInput.addEventListener('change', (event) => {
+//         const file = event.target.files[0];
+//         if (file.type.match('image.*')) {
+//           // Load the image file using FileReader
+//           const reader = new FileReader();
+//           reader.onload = (event) => {
+//             const img = new Image();
+//             img.onload = () => {
+//               // Create a Fabric.js image object
+//               const fabricImg = new fabric.Image(img, {
+//                 left: 0,
+//                 top: 0
+//               });
+//               // Add the image object to the canvas
+//               canvas.add(fabricImg);
+//               // Set the canvas dimensions to match the image dimensions
+//               canvas.setDimensions({
+//                 width: img.width,
+//                 height: img.height
+//               });
+//             };
+//             img.src = event.target.result;
+//           };
+//           reader.readAsDataURL(file);
+//         }
+//   });
+//   const rect = new fabric.Rect({
+//     top: 100,
+//     left: 100,
+//     width: 60,
+//     height: 70,
+//     fill: 'red',
+//   });
+//   canvas.add(rect);
+
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode === 46) { // check if the delete key is pressed
+    let activeObject = canvas.getActiveObject();
+    if (activeObject) {
+      canvas.remove(activeObject);
+    }
+  }
+});
+
+document.getElementById('add-rectangle').addEventListener('click', () => {
+        const rect = new fabric.Circle({
+            left: 100,
+        top: 100,
+        fill: 'red',
+        radius: 50
+        //   width: 100,
+        //   height: 100
+        });
+        canvas.add(rect);
+        canvas.renderAll();
+      });
+
+
+canvas.on('selection:created', function(event) {
+
+    // let activeObject = event.target;
+    let activeObject = canvas.getActiveObject();
+    console.log(activeObject);
+
+    if (activeObject instanceof fabric.IText) {
+
+        $('#ITextTool').attr('style','display:block');
+        // $('#ITextTool input[name=color]').val(activeObject.fill);
+        // $('#ITextTool input[name=fontSize]').val(activeObject.fontSize);
+        setValues(activeObject);
+
+        console.log('Selected object is an IText');
+
+} else {
+
+    // the selected object is not an IText
+
+    console.log('Selected object is not an IText',activeObject);
+
+    $('#ITextTool').attr('style','display:none');
+
+
+}
+});
+
+canvas.on('selection:cleared', function() {
+
+    // no object is selected
+  console.log('No object is selected');
+
+  $('#ITextTool').attr('style','display:none');
+
+});
+
+
+// on change Tools values
+
+
+$('#ITextTool input[name=color]').on('change',function(e){
+    let activeObject = canvas.getActiveObject();
+    console.log(e.target.name,e.target.value);
+    onSetProperties(activeObject,'fill',e.target.value);
+    canvas.renderAll(); // redraw the canvas to update the textbox
+});
+$('#ITextTool input[name=fontSize]').on('change',function(e){
+    let activeObject = canvas.getActiveObject();
+    console.log(e.target.name,e.target.value);
+    onSetProperties(activeObject,'fontSize',e.target.value);
+    canvas.renderAll(); // redraw the canvas to update the textbox
+});
+
+</script>
+  <!-- <br> -->
+  <!-- <button id="customize-button">Customize</button> -->
+</div>
+
+<!-- <script>
+    // Get the necessary DOM elements
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+const imageUpload = document.getElementById('image-upload');
+const textInput = document.getElementById('text-input');
+const lineColor = document.getElementById('line-color');
+const customizeButton = document.getElementById('customize-button');
+
+// Add event listener to the customize button
+customizeButton.addEventListener('click', () => {
+  // Clear the canvas
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Load the uploaded image onto the canvas
+  const fileReader = new FileReader();
+  fileReader.onload = function(event) {
+    const image = new Image();
+    image.onload = function() {
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    }
+    image.src = event.target.result;
+  };
+  fileReader.readAsDataURL(imageUpload.files[0]);
+
+  // Add the text to the canvas
+  context.font = '60px Arial';
+  context.fillStyle = 'black';
+  context.fillText(textInput.value, 100, 100);
+
+  // Draw a line on the canvas
+  context.beginPath();
+  context.moveTo(0, 200);
+  context.lineTo(400, 200);
+  context.strokeStyle = lineColor.value;
+  context.lineWidth = 5;
+  context.stroke();
+});
+
+
+// Move the text when the canvas is clicked
+canvas.addEventListener('click', (event) => {
+  // Clear the previous position of the text
+//   context.clearRect(0, 0, canvas.width, canvas.height);
+  
+  // Update the position of the text
+  x = event.clientX - canvas.offsetLeft;
+  y = event.clientY - canvas.offsetTop;
+  
+  // Redraw the text at the new position
+  context.fillText(textInput.value, x, y);
+});
+
+
+let textElement = {
+  text: 'Hello, world!',
+  font: '30px Arial',
+  x: 100,
+  y: 100
+};
+
+// Draw the text element on the canvas
+function drawTextElement() {
+  context.font = textElement.font;
+  context.fillStyle = 'black';
+  context.fillText(textElement.text, textElement.x, textElement.y);
+}
+
+// Move the text element in response to a mouse drag event
+let isDragging = false;
+let dragOffsetX, dragOffsetY;
+canvas.addEventListener('mousedown', (event) => {
+  // Check if the mouse is within the bounds of the text element
+  const bbox = canvas.getBoundingClientRect();
+  if (event.clientX >= bbox.left + textElement.x && 
+      event.clientX <= bbox.left + textElement.x + context.measureText(textElement.text).width &&
+      event.clientY >= bbox.top + textElement.y - parseInt(textElement.font) &&
+      event.clientY <= bbox.top + textElement.y) {
+    // Start dragging the text element
+    isDragging = true;
+    dragOffsetX = event.clientX - bbox.left - textElement.x;
+    dragOffsetY = event.clientY - bbox.top - textElement.y;
+  }
+});
+
+canvas.addEventListener('mousemove', (event) => {
+  if (isDragging) {
+    // Update the position of the text element
+    textElement.x = event.clientX - canvas.getBoundingClientRect().left - dragOffsetX;
+    textElement.y = event.clientY - canvas.getBoundingClientRect().top - dragOffsetY;
+
+    // Redraw the canvas with the updated position of the text element
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    drawTextElement();
+  }
+});
+
+canvas.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+</script> -->
+
+</body>
+</html>
