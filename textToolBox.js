@@ -54,8 +54,9 @@ const TextToolHtml = `
                         ))
                     }
                 </select>
-</div>
-`;
+</div>`;
+
+
 
 
 const setValues = (object) => {
